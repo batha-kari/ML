@@ -1,56 +1,3 @@
-## QUESTION
-
-Implement linear regression with one variable on the **California Housing dataset** to predict
-housing prices based on a single feature (e.g., the average number of rooms per dwelling).
-Tasks:
-- Load and preprocess the datase.
-- Implement linear regression using both gradient descent and the normal equation.
-- Evaluate the model performance using metrics such as Mean Squared Error
-(MSE) and R-squared.
-- Visualize the fitted line along with the data points.
-
-## ALGORITHM
-
-1. Start.
-
-2. Import the required libraries: NumPy, Pandas, Matplotlib, `train_test_split`, `mean_squared_error` and `r2_score`.
-
-3. Load the California Housing dataset from the CSV file using Pandas.
-
-4. Select `AveRooms` as the independent feature (X) and `MedHouseVal` as the dependent target (y).
-
-5. Split the dataset into training and testing sets using an 80:20 ratio.
-
-6. Perform feature scaling by calculating the mean and standard deviation of the training data. Standardize both training and testing features using these values.
-
-7. Add a column of ones to the feature matrices to include the intercept term.
-
-8. Implement Gradient Descent:
-
-- Initialize the parameters (θ) to zero.
-- Set the learning rate (α), number of iterations and training sample count.
-- Calculate predicted values using matrix multiplication.
-- Calculate the gradients using the prediction errors.
-- Update the parameters using the gradient descent rule.
-- Repeat the process for the specified number of iterations.
-- Predict housing prices using the optimized parameters.
-
-9. Implement Normal Equation:
-
-- Calculate the optimal parameters directly using the pseudoinverse of the feature matrix.
-- Predict housing prices using the calculated parameters.
-
-10. Evaluate both models using Mean Squared Error (MSE) and R-squared (R²) score.
-
-11. Visualize the actual data points using a scatter plot and plot the fitted regression lines obtained from both methods.
-
-12. Display the graph with appropriate labels, title and legend.
-
-13. Stop.
-
-## CODE
-
-```python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -58,6 +5,7 @@ from sklearn.metrics import (mean_squared_error,r2_score)
 
 data = pd.read_csv("california_housing.csv")
 data = data.dropna()[:1500]
+
 
 X = data[['AveRooms']].values
 y = data['MedHouseVal'].values
@@ -107,5 +55,3 @@ plt.plot(X,yg, label = "GD")
 plt.plot(X,yn, '--',label = "NE")
 plt.legend()
 plt.show()
-
-```
